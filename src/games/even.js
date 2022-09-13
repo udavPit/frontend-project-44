@@ -1,5 +1,5 @@
-import { genRandomNumber } from './gen-random.js';
-import { askUserName, gameLoop } from './index.js';
+import { genRandomNumber } from '../gen-random.js';
+import { askUserName, gameLoop } from '../index.js';
 
 const YES = 'yes';
 const NO = 'no';

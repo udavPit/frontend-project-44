@@ -1,34 +1,31 @@
 import readlineSync from 'readline-sync';
 
 const MAX_CORRECT_ANSWERS = 3;
-const YES = 'yes';
-const NO = 'no';
 
 console.log('Welcome to the Brain Games!');
 
-const genRandom = () => Math.floor(Math.random() * 100);
-
-const playEven = () => {
+const askUserName = () => {
   const name = readlineSync.question('May I have your name? ');
-
   console.log(`Hello, ${name}`);
-  console.log(`Answer "${YES}" if the number is even, otherwise answer "${NO}".`);
+  return name;
+};
 
+const gameLoop = (name, questionFn) => {
   let correctAnswers = 0;
 
   while (correctAnswers < MAX_CORRECT_ANSWERS) {
-    const number = genRandom();
-    const isEven = number % 2 === 0;
+    // console.log(questionFn());
+    const { question, expected } = questionFn();
 
-    console.log(`Question: ${number}`);
+    console.log(question);
 
     const answer = readlineSync.question('Your answer: ');
 
-    if ((isEven && answer === YES) || (!isEven && answer === NO)) {
+    if (answer === expected) {
       console.log('Correct!');
       correctAnswers += 1;
     } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${isEven ? YES : NO}'.`);
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${expected}'.`);
       break;
     }
   }
@@ -38,4 +35,7 @@ const playEven = () => {
   }
 };
 
-export default playEven;
+export {
+  askUserName,
+  gameLoop,
+};

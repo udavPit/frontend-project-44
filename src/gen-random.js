@@ -1,4 +1,4 @@
-const genRandomNumber = () => Math.floor(Math.random() * 100);
+const genRandomNumber = () => Math.floor(Math.random() * 10);
 
 const genRandomOperator = () => {
   const operators = ['+', '-', '*'];

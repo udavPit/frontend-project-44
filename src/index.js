@@ -32,6 +32,8 @@ const gameLoop = (name, questionFn) => {
 
   if (correctAnswers === MAX_CORRECT_ANSWERS) {
     console.log(`Congratulations, ${name}!`);
+  } else {
+    console.log(`Let's try again, ${name}!`);
   }
 };
 
